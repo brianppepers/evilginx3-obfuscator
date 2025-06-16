@@ -2,7 +2,7 @@ BETA TESTING
 
 
 
-# Evil-Reverse-Proxy-
+# Evilginx3-Obfuscator
 A non-forked fork of EvilGophish.
 
 # Evilginx3 JS Obfuscator + Injector
